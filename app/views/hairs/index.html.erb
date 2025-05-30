@@ -1,0 +1,23 @@
+<div class="header-container">
+  <%#Heading section %>
+  <div class="d-flex flex-column justify-content-center align-items-center header">
+    <div><h3>OUR COLLECTION</h3></div>
+    <div><h1>Featured Products</h1></div>
+    <div><p>Explore our premium selection of ethically sourced human hair. Each product is carefully tested to ensure the highest quality</p></div>
+  </div>
+
+  <%# Main Section with hair %>
+  <div class="i-main-container">
+      <% @hairs.each do |hair| %>
+        <div class="card col-md-4 border-0 rounded-3 shadow-lg">
+        <div class="card-body text-center p-4">
+          <h5 class="card-title fw-bold text-primary"><%= hair.name %></h5>
+          <p class="card-text text-muted"><strong>Price:</strong> £<%= hair.price %></p>
+          <%= link_to "View Details", hair_path(hair), class: "btn btn-outline-primary fw-bold mt-2" %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

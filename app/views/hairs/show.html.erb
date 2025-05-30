@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-8">
+    <h1><%= @hair.name %></h1>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Hair Details</h5>
+        <p class="card-text">Length: <%= @hair.length %> inches</p>
+        <p class="card-text">Texture: <%= @hair.texture %></p>
+        <p class="card-text">Origin: <%= @hair.origin %></p>
+        <p class="card-text">Price: <%= number_to_currency(@hair.price, unit: '£', precision: 2) %></p>
+      </div>
+    </div>
+
+    <!-- Add to Cart Form -->
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Add to Cart</h5>
+        <%= form_with url: cart_items_path, method: :post, local: true do |f| %>
+          <!-- Hidden field passes the current hair id -->
+          <%= hidden_field_tag :hair_id, @hair.id %>
+          <div class="mb-3">
+            <%= f.label :quantity, 'Quantity', class: 'form-label' %>
+            <%= f.number_field :quantity, value: 1, min: 1, class: 'form-control', required: true %>
+          </div>
+          <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <h2><strong>Reviews</strong></h2>
+    <ul class="list-group">
+      <% @hair.reviews.each do |review| %>
+        <li class="list-group-item">
+          <%= review.comment %>
+          <% if review.user == current_user %>
+            <div class="mt-2">
+              <%= link_to 'Edit your review', edit_hair_review_path(@hair, review), class: "btn btn-warning btn-sm" %>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <%= link_to 'Leave a review', new_hair_review_path(@hair), class: "btn btn-secondary mt-3" %>
+  </div>
+</div>

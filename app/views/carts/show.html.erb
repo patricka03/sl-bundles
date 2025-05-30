@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <h2>Your Shopping Cart</h2>
+
+  <% if @cart_items.any? %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |item| %>
+          <tr>
+            <td><%= item.hair.name %></td>
+            <td><%= number_to_currency(item.hair.price) %></td>
+            <td>
+              <%= form_with model: item, url: cart_item_path(item), method: :patch, local: true do |f| %>
+                <%= f.select :quantity, options_for_select((1..10).to_a, item.quantity), {}, { class: "form-control", onchange: "this.form.submit();" } %>
+              <% end %>
+            </td>
+            <td><%= number_to_currency(item.hair.price * item.quantity) %></td>
+            <td>
+              <%= link_to "Remove", cart_item_path(item), method: :delete,
+                          data: { confirm: "Are you sure you want to remove this item?" },
+                          class: "btn btn-danger btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-end align-items-center mt-4">
+      <h4 class="me-4">Total: <%= number_to_currency(@cart.total, unit: '£', precision: 2) %></h4>
+      <%= link_to "Checkout with Stripe", checkout_cart_path, class: "btn btn-success" %>
+    </div>
+  <% else %>
+    <div class="alert alert-info">
+      Your cart is empty. <%= link_to "Browse Products", hairs_path, class: "alert-link" %>
+    </div>
+  <% end %>
+</div>

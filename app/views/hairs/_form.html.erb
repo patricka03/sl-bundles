@@ -1,0 +1,18 @@
+<div class="conainter mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="mb-3">
+        <%= simple_form_for(hair) do |f| %>
+          <%= f.input :name %>
+          <%= f.input :price %>
+          <%= f.input :length, collection: [10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40], prompt: "Select Length" %>
+          <%= f.input :texture, collection: ["Straight", "Body Wave", "Deep Wave", "Loose Wave", "Water Wave", "Kinky Curly", "Yaki Straight", "Kinky Straight", "Vietnamese Straight", "Cambodian Wavy", "Burmese Curly"], prompt: "Select Texture" %>
+          <%= f.input :origin, collection: ["Peruvian", "Brazilian", "Indian"], prompt: "Select Origin" %>
+          <%= f.input :quantity %>
+          <%= f.input :photo, as: :file %>
+          <%= f.submit  class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+ </div>

@@ -1,0 +1,55 @@
+<header class="navbar-container">
+  <div class="navbar">
+    <div class="navbar-mobile-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="navbar-brand">
+      <a href="">SL BUNDLES</a>
+    </div>
+
+    <div class="navbar-menu">
+
+      <ul class="navbar-links">
+        <li>
+          <%= link_to "Home", root_path, class: "navbar-link" %>
+        </li>
+        <li class="dropdown">
+          <%= link_to "Collection", "#", class: "navbar-link" %>
+          <div class="dropdown-content">
+            <%# "Peruvian", "Brazilian", "Indian" %>
+            <%= link_to "Peruvian", "#", class: "dropdown-item" %>
+            <%= link_to "Brazilian", "#", class: "dropdown-item" %>
+            <%= link_to "Indian", "#", class: "dropdown-item" %>
+          </div>
+        </li>
+        <li>
+          <%= link_to "New Arrivals", "#", class: "navbar-link" %>
+        </li>
+        <li>
+          <%= link_to "Best Sellers", "#", class: "navbar-link" %>
+        </li>
+        <li>
+          <%= link_to "About", "#", class: "navbar-link" %>
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="navbar-action">
+      <a href="/search" class="navbar-action-link" aria-label="Search">
+        <img src="https://api.iconify.design/lucide:search.svg" alt="Search" width="20" height="20">
+      </a>
+      <a href="/account" class="navbar-action-link" aria-label="Account">
+        <img src="https://api.iconify.design/lucide:user.svg" alt="Account" width="20" height="20">
+      </a>
+      <a href="/cart" class="navbar-action-link" aria-label="Cart">
+        <img src="https://api.iconify.design/lucide:shopping-cart.svg" alt="Cart" width="20" height="20">
+        <span class="cart-count">0</span>
+      </a>
+    </div>
+
+    </div>
+</header>
