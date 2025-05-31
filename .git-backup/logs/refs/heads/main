@@ -1,7 +1,0 @@
-0000000000000000000000000000000000000000 cdc7028a8edb4d4b58a5fee1cfc19531907baa1a Patrick Amfo <patrick.amfo@icloud.com> 1747778247 +0100	commit (initial): Initial commit with devise template from https://github.com/lewagon/rails-templates
-cdc7028a8edb4d4b58a5fee1cfc19531907baa1a fb38d0ab0f8dee31bf217b70077e1f2469fd2aca Patrick Amfo <patrick.amfo@icloud.com> 1747783230 +0100	commit: Updated the models, the view and also added the dotenv-rails
-fb38d0ab0f8dee31bf217b70077e1f2469fd2aca c5af7328d5d46b51de127aefea0198db432f2bb4 Patrick Amfo <patrick.amfo@icloud.com> 1748448069 +0100	commit: added cartcontroller and cartitem controller
-c5af7328d5d46b51de127aefea0198db432f2bb4 86812944d9664f441c8ff889d7d582d0f907bc86 Patrick Amfo <patrick.amfo@icloud.com> 1748619471 +0100	commit: Added Nav and Footer
-86812944d9664f441c8ff889d7d582d0f907bc86 97abc5a79ba3c61b10ccaaef1c4ae544be82c2ff Patrick Amfo <patrick.amfo@icloud.com> 1748620412 +0100	commit: first commit
-97abc5a79ba3c61b10ccaaef1c4ae544be82c2ff 97abc5a79ba3c61b10ccaaef1c4ae544be82c2ff Patrick Amfo <patrick.amfo@icloud.com> 1748620412 +0100	Branch: renamed refs/heads/master to refs/heads/main
-97abc5a79ba3c61b10ccaaef1c4ae544be82c2ff 97abc5a79ba3c61b10ccaaef1c4ae544be82c2ff Patrick Amfo <patrick.amfo@icloud.com> 1748620443 +0100	Branch: renamed refs/heads/main to refs/heads/main
