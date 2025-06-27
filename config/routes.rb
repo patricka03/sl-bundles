@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "hairs#index"
+  root to: "pages#home"
 
   # Cart Items routes for creating/updating/deleting individual items
   resources :cart_items, only: [:create, :update, :destroy]

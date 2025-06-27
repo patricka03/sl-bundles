@@ -7,23 +7,22 @@
     </div>
 
     <div class="navbar-brand">
-      <a href="">SL BUNDLES</a>
+      <%= link_to "SL Bundles", root_path, class:"navbar-brand" %>
     </div>
 
     <div class="navbar-menu">
-
       <ul class="navbar-links">
-        <li>
-          <%= link_to "Home", root_path, class: "navbar-link" %>
-        </li>
-        <li class="dropdown">
-          <%= link_to "Collection", "#", class: "navbar-link" %>
-          <div class="dropdown-content">
+        <%# <li class="dropdown"> %>
+          <%# <%= link_to "Collection", "#", class: "navbar-link" %>
+          <%# <div class="dropdown-content">
             <%# "Peruvian", "Brazilian", "Indian" %>
-            <%= link_to "Peruvian", "#", class: "dropdown-item" %>
-            <%= link_to "Brazilian", "#", class: "dropdown-item" %>
-            <%= link_to "Indian", "#", class: "dropdown-item" %>
-          </div>
+            <%# <%= link_to "Peruvian", "#", class: "dropdown-item" %>
+            <%# <%= link_to "Brazilian", "#", class: "dropdown-item" %>
+            <%# <%= link_to "Indian", "#", class: "dropdown-item" %>
+          <%# </div> %>
+        <%# </li> %>
+        <li>
+          <%= link_to "Collection", hairs_path, class: "navbar-link" %>
         </li>
         <li>
           <%= link_to "New Arrivals", "#", class: "navbar-link" %>
@@ -35,21 +34,20 @@
           <%= link_to "About", "#", class: "navbar-link" %>
         </li>
       </ul>
-
     </div>
 
     <div class="navbar-action">
-      <a href="/search" class="navbar-action-link" aria-label="Search">
-        <img src="https://api.iconify.design/lucide:search.svg" alt="Search" width="20" height="20">
-      </a>
-      <a href="/account" class="navbar-action-link" aria-label="Account">
-        <img src="https://api.iconify.design/lucide:user.svg" alt="Account" width="20" height="20">
-      </a>
-      <a href="/cart" class="navbar-action-link" aria-label="Cart">
-        <img src="https://api.iconify.design/lucide:shopping-cart.svg" alt="Cart" width="20" height="20">
-        <span class="cart-count">0</span>
-      </a>
-    </div>
+      <% if user_signed_in? %>
+        <%= link_to cart_path, class: "navbar-action-link", aria: { label: "Cart" } do %>
+          <%= image_tag "https://api.iconify.design/lucide:shopping-cart.svg", alt: "Cart", width: 20, height: 20 %>
+          <span class="cart-count">0</span>
+        <% end %>
 
+        <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "navbar-link" %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class: "navbar-link" %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "navbar-link" %>
+      <% end %>
+    </div>
     </div>
 </header>

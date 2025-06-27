@@ -1,4 +1,5 @@
 class HairsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :index ]
   before_action :set_hair, only: [:edit, :update, :destroy, :show]
 
   def index
