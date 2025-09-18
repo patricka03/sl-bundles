@@ -28,7 +28,7 @@ file = File.open('app/assets/images/SeamlessClipins-BodyWave_74241c2b-1ce7-4508-
 
 admin_hair = Hair.new(
   name: "testhair",
-  price: 180,
+  price: 100,
   length: 20,
   texture: "Loose Wave",
   origin: "Brazilian",

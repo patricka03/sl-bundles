@@ -1,12 +1,13 @@
 class CartsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :checkout, :show ]
   before_action :set_cart, only: [:show, :checkout, :success, :cancel]
 
   def show
     @cart_items = @cart.cart_items.includes(:hair)
   end
 
+  Stripe.api_key = ENV['STRIPE_SECRET_KEY'] # ensure this pulls from environment variables
   def checkout
-    # Create a Stripe Checkout session based on the cart items.
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: @cart.cart_items.map do |item|
@@ -16,18 +17,19 @@ class CartsController < ApplicationController
             product_data: {
               name: item.hair.name,
             },
-            unit_amount: (item.hair.price * 100).to_i, # Stripe works in cents
+            unit_amount: (item.hair.price * 100).to_i,
           },
           quantity: item.quantity,
         }
       end,
       mode: 'payment',
-      success_url: success_cart_url, # You need these routes defined
+      success_url: success_cart_url,
       cancel_url: cancel_cart_url
     )
 
     redirect_to session.url, allow_other_host: true
   end
+
 
   def success
     # Mark the cart as paid
